@@ -1,0 +1,59 @@
+Modern Server to Server Communication
+With Go, gRPC, Protobuf, and Ruby
+
+Dan Bridges
+Sr. Developer, beezwax
+dan_b@beezwax.net
+@_danbridges
+
+* RPC and gRPC
+
+- RPC: Remote Procedure Call
+- Transparently call a function which is executed remotely and returns data to you in the same format as the language you are using.
+- gRPC is Google's implementation and is being increasingly adopted.
+- Uses Protobuf to define schema of remote procedure arguments/return types.
+- Automatic code generation for your target language.
+
+* Protobuf
+
+- Strongly typed schema definition language.
+- Binary transfer, not human readable.
+- Generated server/client code (un)marshals messages for language to language communication.
+
+.code greeter.proto
+
+* gRPC vs JSON REST vs GraphQL
+
+*gRPC:* _fast_
+
+- Uses HTTP2, the server/client connection is kept open, allows streaming.
+- Strongly typed.
+- Good for server to server communication or native apps. 
+
+*JSON* *REST:* _ubiquitous_
+
+- Human readable
+- REST API's can be difficult to properly architect.
+
+*GraphQL:* _flexible_
+
+- Flexible, only get the data you want.
+- Strongly typed.
+- Good for APIs being consumed by web frontends.
+
+* Example
+
+- Server written in Go
+- Client written in Ruby
+- Generate our protobuf code
+
+_Makefile_
+.code Makefile
+
+- C++, Dart, Go, Java, Python, Ruby, C#, Objective C, JavaScript, PHP
+
+* Server (Go)
+.play server.go /START OMIT/,/END OMIT/
+
+* Client (Ruby)
+.play -edit client.rb /START OMIT/,/END OMIT/
